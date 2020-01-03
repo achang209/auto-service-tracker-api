@@ -10,9 +10,9 @@ public class Invoice {
     @Id @GeneratedValue
     private int id;
     private String date;
-    private int currentMileage;
+    private int mileage;
     private String serviceProvider;
-    private String servicesPerformed;
+    private String servicePerformed;
 
     public int getId() {
         return id;
@@ -30,12 +30,12 @@ public class Invoice {
         this.date = date;
     }
 
-    public int getCurrentMileage() {
-        return currentMileage;
+    public int getMileage() {
+        return mileage;
     }
 
-    public void setCurrentMileage(int currentMileage) {
-        this.currentMileage = currentMileage;
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
     }
 
     public String getServiceProvider() {
@@ -46,11 +46,11 @@ public class Invoice {
         this.serviceProvider = serviceProvider;
     }
 
-    public String getServicesPerformed() {
-        return servicesPerformed;
+    public String getServicePerformed() {
+        return servicePerformed;
     }
 
-    public void setServicesPerformed(String servicesPerformed) {
-        this.servicesPerformed = servicesPerformed;
+    public void setServicePerformed(String servicePerformed) {
+        this.servicePerformed = servicePerformed;
     }
 }
