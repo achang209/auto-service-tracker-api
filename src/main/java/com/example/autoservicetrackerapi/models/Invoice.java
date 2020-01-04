@@ -13,6 +13,7 @@ public class Invoice {
     private int mileage;
     private String serviceProvider;
     private String servicePerformed;
+    private String filePath;
 
     public int getId() {
         return id;
@@ -52,5 +53,13 @@ public class Invoice {
 
     public void setServicePerformed(String servicePerformed) {
         this.servicePerformed = servicePerformed;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }
