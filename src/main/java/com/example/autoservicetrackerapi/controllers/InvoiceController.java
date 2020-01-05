@@ -3,13 +3,16 @@ package com.example.autoservicetrackerapi.controllers;
 import com.example.autoservicetrackerapi.models.Invoice;
 import com.example.autoservicetrackerapi.models.InvoiceDao;
 import com.example.autoservicetrackerapi.services.FileService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
@@ -26,6 +29,15 @@ public class InvoiceController {
     @GetMapping("invoices")
     public List<Invoice> getInvoices () {
         return (List<Invoice>) invoiceDao.findAll();
+    }
+
+    @GetMapping("downloadFile/{fileName}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) throws IOException {
+        Resource resource = fileService.loadFileAsResource(fileName);
+        String contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, String.format("attachment; filename=\"%s\"", resource.getFilename()))
+                .body(resource);
     }
 
     @PostMapping("invoices")
