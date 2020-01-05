@@ -20,7 +20,7 @@ public class FileService {
 
     public void uploadFile(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        Path copyLocation = Paths.get(uploadDir + File.separator + fileName);
+        Path copyLocation = Paths.get(uploadDir + File.separator + fileName).toAbsolutePath();
         Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
     }
 }
