@@ -31,8 +31,7 @@ public class InvoiceController {
     @PostMapping("invoices")
     public void addInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
         fileService.uploadFile(file);
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/")
-                .path(fileService.getFileName(file)).toUriString();
+        String fileDownloadUri = fileService.getFileDownloadUri(file);
         Invoice invoiceObj = new ObjectMapper().readValue(invoice, Invoice.class);
         invoiceObj.setFilePath(fileDownloadUri);
         invoiceDao.save(invoiceObj);
