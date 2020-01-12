@@ -2,7 +2,7 @@ package com.example.autoservicetrackerapi.controllers;
 
 import com.example.autoservicetrackerapi.models.Invoice;
 import com.example.autoservicetrackerapi.models.InvoiceDao;
-import com.example.autoservicetrackerapi.services.FileService;
+import com.example.autoservicetrackerapi.services.FileStorageServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -24,7 +24,7 @@ public class InvoiceController {
     private InvoiceDao invoiceDao;
 
     @Autowired
-    private FileService fileService;
+    private FileStorageServiceImpl fileStorageService;
 
     @GetMapping("invoices")
     public List<Invoice> getInvoices () {
@@ -33,7 +33,7 @@ public class InvoiceController {
 
     @GetMapping("downloadFile/{fileName}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) throws IOException {
-        Resource resource = fileService.loadFileAsResource(fileName);
+        Resource resource = fileStorageService.loadFileAsResource(fileName);
         String contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
         return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
                 .header(HttpHeaders.CONTENT_DISPOSITION, String.format("attachment; filename=\"%s\"", resource.getFilename()))
@@ -42,8 +42,8 @@ public class InvoiceController {
 
     @PostMapping("invoices")
     public void addInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
-        fileService.uploadFile(file);
-        String fileDownloadUri = fileService.getFileDownloadUri(file);
+        fileStorageService.store(file);
+        String fileDownloadUri = fileStorageService.convertToFileDownloadUri(file);
         Invoice invoiceObj = new ObjectMapper().readValue(invoice, Invoice.class);
         invoiceObj.setFilePath(fileDownloadUri);
         invoiceDao.save(invoiceObj);
