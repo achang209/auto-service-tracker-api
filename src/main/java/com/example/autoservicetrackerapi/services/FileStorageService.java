@@ -9,4 +9,8 @@ public interface FileStorageService {
 
     void store(MultipartFile file);
 
+    String convertToFileDownloadUri(MultipartFile file);
+
+    public Resource loadFileAsResource(String fileName);
+
 }
