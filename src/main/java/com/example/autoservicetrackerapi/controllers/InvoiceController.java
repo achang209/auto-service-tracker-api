@@ -3,6 +3,7 @@ package com.example.autoservicetrackerapi.controllers;
 import com.example.autoservicetrackerapi.models.Invoice;
 import com.example.autoservicetrackerapi.models.InvoiceDao;
 import com.example.autoservicetrackerapi.services.FileService;
+import com.example.autoservicetrackerapi.services.FileStorageServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -26,6 +27,9 @@ public class InvoiceController {
     @Autowired
     private FileService fileService;
 
+    @Autowired
+    private FileStorageServiceImpl fileStorageService;
+
     @GetMapping("invoices")
     public List<Invoice> getInvoices () {
         return (List<Invoice>) invoiceDao.findAll();
@@ -42,7 +46,7 @@ public class InvoiceController {
 
     @PostMapping("invoices")
     public void addInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
-        fileService.uploadFile(file);
+        fileStorageService.store(file);
         String fileDownloadUri = fileService.getFileDownloadUri(file);
         Invoice invoiceObj = new ObjectMapper().readValue(invoice, Invoice.class);
         invoiceObj.setFilePath(fileDownloadUri);
