@@ -3,6 +3,7 @@ package com.example.autoservicetrackerapi.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Invoice {
@@ -11,7 +12,8 @@ public class Invoice {
     private int id;
     private String date;
     private int mileage;
-    private String serviceProvider;
+    @ManyToOne
+    private ServiceProvider serviceProvider;
     private String servicePerformed;
     private String filePath;
 
@@ -39,11 +41,11 @@ public class Invoice {
         this.mileage = mileage;
     }
 
-    public String getServiceProvider() {
+    public ServiceProvider getServiceProvider() {
         return serviceProvider;
     }
 
-    public void setServiceProvider(String serviceProvider) {
+    public void setServiceProvider(ServiceProvider serviceProvider) {
         this.serviceProvider = serviceProvider;
     }
 
