@@ -23,14 +23,6 @@ public class SearchController {
 
     @GetMapping("service")
     public List<Invoice> searchByService(@RequestParam String service) {
-        Iterable<Invoice> allInvoices = invoiceDao.findAll();
-        List<Invoice> invoicesToSend = new ArrayList<>();
-
-        for (Invoice invoice : allInvoices) {
-            if (invoice.getServicePerformed().toLowerCase().contains(service)) {
-                invoicesToSend.add(invoice);
-            }
-        }
-        return invoicesToSend;
+        return invoiceDao.findByServicePerformedIgnoreCase(service);
     }
 }
