@@ -18,15 +18,7 @@ public class SearchController {
 
     @GetMapping("provider")
     public List<Invoice> searchByProvider(@RequestParam String provider) {
-        Iterable<Invoice> allInvoices = invoiceDao.findAll();
-        List<Invoice> invoicesToSend = new ArrayList<>();
-
-        for (Invoice invoice : allInvoices) {
-            if (invoice.getServiceProvider().toLowerCase().contains(provider)) {
-                invoicesToSend.add(invoice);
-            }
-        }
-        return invoicesToSend;
+        return invoiceDao.findByServiceProviderIgnoreCase(provider);
     }
 
     @GetMapping("service")
