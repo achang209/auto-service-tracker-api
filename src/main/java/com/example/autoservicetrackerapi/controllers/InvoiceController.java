@@ -1,7 +1,10 @@
 package com.example.autoservicetrackerapi.controllers;
 
+import com.example.autoservicetrackerapi.MainParser;
 import com.example.autoservicetrackerapi.models.Invoice;
 import com.example.autoservicetrackerapi.models.InvoiceDao;
+import com.example.autoservicetrackerapi.models.ServiceProvider;
+import com.example.autoservicetrackerapi.models.ServiceProviderDao;
 import com.example.autoservicetrackerapi.services.FileStorageServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +19,17 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
+
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class InvoiceController {
 
     @Autowired
     private InvoiceDao invoiceDao;
+
+    @Autowired
+    private ServiceProviderDao serviceProviderDao;
 
     @Autowired
     private FileStorageServiceImpl fileStorageService;
@@ -40,6 +48,8 @@ public class InvoiceController {
                 .body(resource);
     }
 
+    /*
+
     @PostMapping("invoices")
     public void addInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
         fileStorageService.store(file);
@@ -48,4 +58,29 @@ public class InvoiceController {
         invoiceObj.setFilePath(fileDownloadUri);
         invoiceDao.save(invoiceObj);
     }
+
+     */
+
+
+    @PostMapping("invoices")
+    public void addInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
+        fileStorageService.store(file);
+        String fileDownloadUri = fileStorageService.convertToFileDownloadUri(file);
+
+        MainParser mainParser = new ObjectMapper().readValue(invoice, MainParser.class);
+        Invoice invoiceObj = new Invoice();
+
+        invoiceObj.setDate(mainParser.getDate());
+        invoiceObj.setMileage(mainParser.getMileage());
+        ServiceProvider serviceProvider = serviceProviderDao.findById(mainParser.getServiceProviderId()).get();
+        invoiceObj.setServiceProvider(serviceProvider);
+        invoiceObj.setServicePerformed(mainParser.getServicePerformed());
+        invoiceObj.setFilePath(fileDownloadUri);
+
+        invoiceDao.save(invoiceObj);
+
+    }
+
+
+
 }
