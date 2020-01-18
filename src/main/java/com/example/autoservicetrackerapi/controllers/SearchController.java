@@ -16,10 +16,12 @@ public class SearchController {
     @Autowired
     private InvoiceDao invoiceDao;
 
+    /*
     @GetMapping("provider")
     public List<Invoice> searchByProvider(@RequestParam String provider) {
         return invoiceDao.findByServiceProviderIgnoreCase(provider);
     }
+    */
 
     @GetMapping("service")
     public List<Invoice> searchByService(@RequestParam String service) {
