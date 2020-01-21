@@ -1,5 +1,7 @@
 package com.example.autoservicetrackerapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class ServiceProvider {
     @Id @GeneratedValue
     private int id;
     private String name;
-    @OneToMany @JoinColumn(name = "service_provider_id")
+    @OneToMany @JoinColumn(name = "service_provider_id") @JsonIgnore
     private List<Invoice> invoices = new ArrayList<>();
 
     public int getId() {
