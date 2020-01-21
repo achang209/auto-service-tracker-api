@@ -1,12 +1,14 @@
 package com.example.autoservicetrackerapi.models.ui;
 
 import com.example.autoservicetrackerapi.models.ServiceProvider;
+import org.springframework.web.multipart.MultipartFile;
 
 public class InvoiceDetailsRequest {
     private String date;
     private int mileage;
     private int serviceProviderId;
     private String servicePerformed;
+    private MultipartFile file;
 
     public String getDate() {
         return date;
@@ -38,5 +40,13 @@ public class InvoiceDetailsRequest {
 
     public void setServicePerformed(String servicePerformed) {
         this.servicePerformed = servicePerformed;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 }
