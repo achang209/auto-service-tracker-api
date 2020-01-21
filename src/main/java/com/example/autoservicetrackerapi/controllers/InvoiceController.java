@@ -64,32 +64,4 @@ public class InvoiceController {
         return returnValue;
 
     }
-
-
-
-    /*
-
-    @PostMapping("invoices")
-    public void addInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
-        fileStorageService.store(file);
-        String fileDownloadUri = fileStorageService.convertToFileDownloadUri(file);
-
-        MainParser mainParser = new ObjectMapper().readValue(invoice, MainParser.class);
-        Invoice invoiceObj = new Invoice();
-
-        invoiceObj.setDate(mainParser.getDate());
-        invoiceObj.setMileage(mainParser.getMileage());
-        ServiceProvider serviceProvider = serviceProviderDao.findById(mainParser.getServiceProviderId()).get();
-        invoiceObj.setServiceProvider(serviceProvider);
-        invoiceObj.setServicePerformed(mainParser.getServicePerformed());
-        invoiceObj.setFilePath(fileDownloadUri);
-
-        invoiceDao.save(invoiceObj);
-
-    }
-
-     */
-
-
-
 }
