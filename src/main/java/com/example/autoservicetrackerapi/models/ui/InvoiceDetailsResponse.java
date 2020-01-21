@@ -1,18 +1,20 @@
 package com.example.autoservicetrackerapi.models.ui;
 
+import com.example.autoservicetrackerapi.models.ServiceProvider;
+
 public class InvoiceDetailsResponse {
-    private String invoiceId;
+    private int Id;
     private int mileage;
-    private String serviceProviderName;
-    private String servicePerformedName;
+    private ServiceProvider serviceProvider;
+    private String servicePerformed;
     private String filePath;
 
-    public String getInvoiceId() {
-        return invoiceId;
+    public int getId() {
+        return Id;
     }
 
-    public void setInvoiceId(String invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setId(int id) {
+        Id = id;
     }
 
     public int getMileage() {
@@ -23,20 +25,20 @@ public class InvoiceDetailsResponse {
         this.mileage = mileage;
     }
 
-    public String getServiceProviderName() {
-        return serviceProviderName;
+    public ServiceProvider getServiceProvider() {
+        return serviceProvider;
     }
 
-    public void setServiceProviderName(String serviceProviderName) {
-        this.serviceProviderName = serviceProviderName;
+    public void setServiceProvider(ServiceProvider serviceProvider) {
+        this.serviceProvider = serviceProvider;
     }
 
-    public String getServicePerformedName() {
-        return servicePerformedName;
+    public String getServicePerformed() {
+        return servicePerformed;
     }
 
-    public void setServicePerformedName(String servicePerformedName) {
-        this.servicePerformedName = servicePerformedName;
+    public void setServicePerformed(String servicePerformed) {
+        this.servicePerformed = servicePerformed;
     }
 
     public String getFilePath() {
