@@ -49,7 +49,32 @@ public class InvoiceServiceImpl implements InvoiceService {
             BeanUtils.copyProperties(invoice, invoiceDto);
             returnValue.add(invoiceDto);
         }
+        return returnValue;
+    }
 
+    @Override
+    public List<InvoiceDto> searchInvoicesByProvider(String name) {
+        List<Invoice> retrievedInvoices = invoiceDao.findByServiceProviderNameIgnoreCase(name);
+        List<InvoiceDto> returnValue = new ArrayList<>();
+
+        for(Invoice invoice : retrievedInvoices) {
+            InvoiceDto invoiceDto = new InvoiceDto();
+            BeanUtils.copyProperties(invoice, invoiceDto);
+            returnValue.add(invoiceDto);
+        }
+        return returnValue;
+    }
+
+    @Override
+    public List<InvoiceDto> searchInvoicesByService(String name) {
+        List<Invoice> retrievedInvoices = invoiceDao.findByServicePerformedNameIgnoreCase(name);
+        List<InvoiceDto> returnValue = new ArrayList<>();
+
+        for(Invoice invoice : retrievedInvoices) {
+            InvoiceDto invoiceDto = new InvoiceDto();
+            BeanUtils.copyProperties(invoice, invoiceDto);
+            returnValue.add(invoiceDto);
+        }
         return returnValue;
     }
 }
