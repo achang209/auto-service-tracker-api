@@ -1,10 +1,7 @@
 package com.example.autoservicetrackerapi.controllers;
 
-import com.example.autoservicetrackerapi.models.Invoice;
-import com.example.autoservicetrackerapi.models.InvoiceDao;
 import com.example.autoservicetrackerapi.models.InvoiceDto;
 import com.example.autoservicetrackerapi.models.ui.InvoiceDetailsResponse;
-import com.example.autoservicetrackerapi.services.InvoiceService;
 import com.example.autoservicetrackerapi.services.InvoiceServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
