@@ -2,20 +2,17 @@ package com.example.autoservicetrackerapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class ServicePerformed {
     @Id
     @GeneratedValue
     private int id;
     private String name;
-    @OneToMany
-    @JoinColumn(name = "service_performed_id") @JsonIgnore
+    @OneToMany @JoinColumn(name = "service_performed_id") @JsonIgnore
     private List<Invoice> invoices = new ArrayList<>();
 
     public ServicePerformed() {
