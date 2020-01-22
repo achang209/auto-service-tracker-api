@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,8 +36,17 @@ public class InvoiceController {
     private FileStorageServiceImpl fileStorageService;
 
     @GetMapping("invoices")
-    public List<Invoice> getInvoices () {
-        return (List<Invoice>) invoiceDao.findAll();
+    public List<InvoiceDetailsResponse> getInvoices () {
+
+        List<InvoiceDto> invoices = invoiceService.getInvoices();
+        List<InvoiceDetailsResponse> returnValue = new ArrayList<>();
+
+        for (InvoiceDto invoiceDto : invoices) {
+            InvoiceDetailsResponse invoiceDetailsResponse = new InvoiceDetailsResponse();
+            BeanUtils.copyProperties(invoiceDto, invoiceDetailsResponse);
+            returnValue.add(invoiceDetailsResponse);
+        }
+        return returnValue;
     }
 
     @GetMapping("downloadFile/{fileName}")

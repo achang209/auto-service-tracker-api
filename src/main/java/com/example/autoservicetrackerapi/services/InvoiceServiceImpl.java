@@ -3,7 +3,11 @@ package com.example.autoservicetrackerapi.services;
 import com.example.autoservicetrackerapi.models.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
@@ -31,6 +35,20 @@ public class InvoiceServiceImpl implements InvoiceService {
         Invoice storedInvoiceDetails = invoiceDao.save(invoice);
         InvoiceDto returnValue = new InvoiceDto();
         BeanUtils.copyProperties(storedInvoiceDetails, returnValue);
+
+        return returnValue;
+    }
+
+    @Override
+    public List<InvoiceDto> getInvoices() {
+        List<Invoice> retrievedInvoices = invoiceDao.findAll();
+        List<InvoiceDto> returnValue = new ArrayList<>();
+
+        for(Invoice invoice : retrievedInvoices) {
+            InvoiceDto invoiceDto = new InvoiceDto();
+            BeanUtils.copyProperties(invoice, invoiceDto);
+            returnValue.add(invoiceDto);
+        }
 
         return returnValue;
     }
