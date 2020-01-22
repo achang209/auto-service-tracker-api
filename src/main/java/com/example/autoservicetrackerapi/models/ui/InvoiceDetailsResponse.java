@@ -4,6 +4,7 @@ import com.example.autoservicetrackerapi.models.ServiceProvider;
 
 public class InvoiceDetailsResponse {
     private int Id;
+    private String date;
     private int mileage;
     private ServiceProvider serviceProvider;
     private String servicePerformed;
@@ -15,6 +16,14 @@ public class InvoiceDetailsResponse {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getMileage() {
