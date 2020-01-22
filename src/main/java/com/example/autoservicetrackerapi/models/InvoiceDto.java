@@ -1,23 +1,19 @@
 package com.example.autoservicetrackerapi.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.Serializable;
 
-@Entity
-public class Invoice implements Serializable {
+public class InvoiceDto implements Serializable {
+    private static final long serialVersionUID = 6460692248095615980L;
 
-    private static final long serialVersionUID = -8573104243025730699L;
-
-    @Id @GeneratedValue
     private int id;
     private String date;
     private int mileage;
-    @ManyToOne
+    private int serviceProviderId;
     private ServiceProvider serviceProvider;
     private String servicePerformed;
+    private MultipartFile file;
     private String filePath;
 
     public int getId() {
@@ -44,6 +40,14 @@ public class Invoice implements Serializable {
         this.mileage = mileage;
     }
 
+    public int getServiceProviderId() {
+        return serviceProviderId;
+    }
+
+    public void setServiceProviderId(int serviceProviderId) {
+        this.serviceProviderId = serviceProviderId;
+    }
+
     public ServiceProvider getServiceProvider() {
         return serviceProvider;
     }
@@ -58,6 +62,14 @@ public class Invoice implements Serializable {
 
     public void setServicePerformed(String servicePerformed) {
         this.servicePerformed = servicePerformed;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
     public String getFilePath() {

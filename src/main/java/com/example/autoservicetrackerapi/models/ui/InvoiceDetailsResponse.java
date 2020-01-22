@@ -1,31 +1,21 @@
-package com.example.autoservicetrackerapi.models;
+package com.example.autoservicetrackerapi.models.ui;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.io.Serializable;
+import com.example.autoservicetrackerapi.models.ServiceProvider;
 
-@Entity
-public class Invoice implements Serializable {
-
-    private static final long serialVersionUID = -8573104243025730699L;
-
-    @Id @GeneratedValue
-    private int id;
+public class InvoiceDetailsResponse {
+    private int Id;
     private String date;
     private int mileage;
-    @ManyToOne
     private ServiceProvider serviceProvider;
     private String servicePerformed;
     private String filePath;
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
     public String getDate() {
