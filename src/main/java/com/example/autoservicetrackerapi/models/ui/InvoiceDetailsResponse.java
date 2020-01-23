@@ -2,7 +2,7 @@ package com.example.autoservicetrackerapi.models.ui;
 
 import com.example.autoservicetrackerapi.models.Provider;
 
-public class InvoiceResponse {
+public class InvoiceDetailsResponse {
     private int Id;
     private String date;
     private int mileage;

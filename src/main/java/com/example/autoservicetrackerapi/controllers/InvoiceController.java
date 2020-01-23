@@ -1,8 +1,8 @@
 package com.example.autoservicetrackerapi.controllers;
 
 import com.example.autoservicetrackerapi.models.*;
-import com.example.autoservicetrackerapi.models.ui.InvoiceRequest;
-import com.example.autoservicetrackerapi.models.ui.InvoiceResponse;
+import com.example.autoservicetrackerapi.models.ui.InvoiceDetailsRequest;
+import com.example.autoservicetrackerapi.models.ui.InvoiceDetailsResponse;
 import com.example.autoservicetrackerapi.services.FileStorageServiceImpl;
 import com.example.autoservicetrackerapi.services.InvoiceServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,15 +36,15 @@ public class InvoiceController {
     private FileStorageServiceImpl fileStorageService;
 
     @GetMapping("invoices")
-    public List<InvoiceResponse> getInvoices () {
+    public List<InvoiceDetailsResponse> getInvoices () {
 
         List<InvoiceDto> invoices = invoiceService.getInvoices();
-        List<InvoiceResponse> returnValue = new ArrayList<>();
+        List<InvoiceDetailsResponse> returnValue = new ArrayList<>();
 
         for (InvoiceDto invoiceDto : invoices) {
-            InvoiceResponse invoiceResponse = new InvoiceResponse();
-            BeanUtils.copyProperties(invoiceDto, invoiceResponse);
-            returnValue.add(invoiceResponse);
+            InvoiceDetailsResponse invoiceDetailsResponse = new InvoiceDetailsResponse();
+            BeanUtils.copyProperties(invoiceDto, invoiceDetailsResponse);
+            returnValue.add(invoiceDetailsResponse);
         }
         return returnValue;
     }
@@ -59,16 +59,16 @@ public class InvoiceController {
     }
 
     @PostMapping("invoices")
-    public InvoiceResponse createInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
+    public InvoiceDetailsResponse createInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
 
-        InvoiceRequest invoiceRequest = new ObjectMapper().readValue(invoice, InvoiceRequest.class);
-        invoiceRequest.setFile(file);
+        InvoiceDetailsRequest invoiceDetailsRequest = new ObjectMapper().readValue(invoice, InvoiceDetailsRequest.class);
+        invoiceDetailsRequest.setFile(file);
 
         InvoiceDto invoiceDto = new InvoiceDto();
-        BeanUtils.copyProperties(invoiceRequest, invoiceDto);
+        BeanUtils.copyProperties(invoiceDetailsRequest, invoiceDto);
         InvoiceDto createdInvoice = invoiceService.createInvoice(invoiceDto);
 
-        InvoiceResponse returnValue = new InvoiceResponse();
+        InvoiceDetailsResponse returnValue = new InvoiceDetailsResponse();
         BeanUtils.copyProperties(createdInvoice, returnValue);
 
         return returnValue;

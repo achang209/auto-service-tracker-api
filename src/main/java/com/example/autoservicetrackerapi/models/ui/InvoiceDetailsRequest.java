@@ -2,7 +2,7 @@ package com.example.autoservicetrackerapi.models.ui;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class InvoiceRequest {
+public class InvoiceDetailsRequest {
     private String date;
     private int mileage;
     private int serviceProviderId;
