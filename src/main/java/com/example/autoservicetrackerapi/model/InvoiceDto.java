@@ -10,9 +10,10 @@ public class InvoiceDto implements Serializable {
     private int id;
     private String date;
     private int mileage;
-    private int serviceProviderId;
+    private int vendorId;
     private Vendor vendor;
-    private String servicePerformed;
+    private int repairId;
+    private Repair repair;
     private MultipartFile file;
     private String filePath;
 
@@ -40,12 +41,12 @@ public class InvoiceDto implements Serializable {
         this.mileage = mileage;
     }
 
-    public int getServiceProviderId() {
-        return serviceProviderId;
+    public int getVendorId() {
+        return vendorId;
     }
 
-    public void setServiceProviderId(int serviceProviderId) {
-        this.serviceProviderId = serviceProviderId;
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
     }
 
     public Vendor getVendor() {
@@ -56,12 +57,20 @@ public class InvoiceDto implements Serializable {
         this.vendor = vendor;
     }
 
-    public String getServicePerformed() {
-        return servicePerformed;
+    public int getRepairId() {
+        return repairId;
     }
 
-    public void setServicePerformed(String servicePerformed) {
-        this.servicePerformed = servicePerformed;
+    public void setRepairId(int repairId) {
+        this.repairId = repairId;
+    }
+
+    public Repair getRepair() {
+        return repair;
+    }
+
+    public void setRepair(Repair repair) {
+        this.repair = repair;
     }
 
     public MultipartFile getFile() {
