@@ -1,7 +1,7 @@
 package com.example.autoservicetrackerapi.controllers;
 
 import com.example.autoservicetrackerapi.models.ProviderDto;
-import com.example.autoservicetrackerapi.models.ui.ServiceProviderResponse;
+import com.example.autoservicetrackerapi.models.ui.VendorDetailsResponse;
 import com.example.autoservicetrackerapi.services.ProviderServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ public class ServiceProviderController {
     private ProviderServiceImpl providerService;
 
     @GetMapping("service_provider")
-    public List<ServiceProviderResponse> getServiceProviders () {
+    public List<VendorDetailsResponse> getServiceProviders () {
         List<ProviderDto> providers = providerService.getServiceProviders();
-        List<ServiceProviderResponse> returnValue = new ArrayList<>();
+        List<VendorDetailsResponse> returnValue = new ArrayList<>();
 
         for (ProviderDto providerDto : providers) {
-            ServiceProviderResponse serviceProviderResponse = new ServiceProviderResponse();
-            BeanUtils.copyProperties(providerDto, serviceProviderResponse);
-            returnValue.add(serviceProviderResponse);
+            VendorDetailsResponse serviceVendorDetailsResponse = new VendorDetailsResponse();
+            BeanUtils.copyProperties(providerDto, serviceVendorDetailsResponse);
+            returnValue.add(serviceVendorDetailsResponse);
         }
         return returnValue;
     }

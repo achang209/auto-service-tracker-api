@@ -1,6 +1,6 @@
 package com.example.autoservicetrackerapi.models.ui;
 
-public class ServiceProviderRequest {
+public class VendorDetailsResponse {
     private int id;
     private String name;
 
