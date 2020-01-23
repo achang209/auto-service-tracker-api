@@ -35,7 +35,7 @@ public class InvoiceController {
     @Autowired
     private FileStorageServiceImpl fileStorageService;
 
-    @GetMapping("invoices")
+    @GetMapping("invoice")
     public List<InvoiceDetailsResponse> getInvoices () {
 
         List<InvoiceDto> invoices = invoiceService.getInvoices();
@@ -58,7 +58,7 @@ public class InvoiceController {
                 .body(resource);
     }
 
-    @PostMapping("invoices")
+    @PostMapping("invoice")
     public InvoiceDetailsResponse createInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
 
         InvoiceDetailsRequest invoiceDetailsRequest = new ObjectMapper().readValue(invoice, InvoiceDetailsRequest.class);
