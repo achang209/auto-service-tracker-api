@@ -15,7 +15,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     private InvoiceDao invoiceDao;
 
     @Autowired
-    private ProviderDao providerDao;
+    private VendorDao vendorDao;
 
     @Autowired
     private FileStorageServiceImpl fileStorageService;
@@ -26,7 +26,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         String fileDownloadUri = fileStorageService.convertToFileDownloadUri(invoiceDto.getFile());
         invoiceDto.setFilePath(fileDownloadUri);
 
-        Vendor vendor = providerDao.findById(invoiceDto.getServiceProviderId()).get();
+        Vendor vendor = vendorDao.findById(invoiceDto.getServiceProviderId()).get();
         invoiceDto.setVendor(vendor);
 
         Invoice invoice = new Invoice();

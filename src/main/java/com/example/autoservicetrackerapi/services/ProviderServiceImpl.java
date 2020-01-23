@@ -1,8 +1,8 @@
 package com.example.autoservicetrackerapi.services;
 
 import com.example.autoservicetrackerapi.models.Vendor;
-import com.example.autoservicetrackerapi.models.ProviderDao;
-import com.example.autoservicetrackerapi.models.ProviderDto;
+import com.example.autoservicetrackerapi.models.VendorDao;
+import com.example.autoservicetrackerapi.models.VendorDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ import java.util.List;
 public class ProviderServiceImpl implements ProviderService {
 
     @Autowired
-    private ProviderDao providerDao;
+    private VendorDao vendorDao;
 
     @Override
-    public List<ProviderDto> getServiceProviders() {
-        List<Vendor> retrievedVendors = providerDao.findAll();
-        List<ProviderDto> returnValue = new ArrayList<>();
+    public List<VendorDto> getServiceProviders() {
+        List<Vendor> retrievedVendors = vendorDao.findAll();
+        List<VendorDto> returnValue = new ArrayList<>();
 
         for (Vendor vendor : retrievedVendors) {
-            ProviderDto providerDto = new ProviderDto();
-            BeanUtils.copyProperties(vendor, providerDto);
-            returnValue.add(providerDto);
+            VendorDto vendorDto = new VendorDto();
+            BeanUtils.copyProperties(vendor, vendorDto);
+            returnValue.add(vendorDto);
         }
 
         return returnValue;

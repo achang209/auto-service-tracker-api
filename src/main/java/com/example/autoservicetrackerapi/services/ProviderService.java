@@ -1,9 +1,9 @@
 package com.example.autoservicetrackerapi.services;
 
-import com.example.autoservicetrackerapi.models.ProviderDto;
+import com.example.autoservicetrackerapi.models.VendorDto;
 
 import java.util.List;
 
 public interface ProviderService {
-    List<ProviderDto> getServiceProviders();
+    List<VendorDto> getServiceProviders();
 }
