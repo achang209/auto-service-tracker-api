@@ -2,7 +2,7 @@ package com.example.autoservicetrackerapi.controllers;
 
 import com.example.autoservicetrackerapi.models.*;
 import com.example.autoservicetrackerapi.models.ui.InvoiceRequest;
-import com.example.autoservicetrackerapi.models.ui.InvoiceDetailsResponse;
+import com.example.autoservicetrackerapi.models.ui.InvoiceResponse;
 import com.example.autoservicetrackerapi.services.FileStorageServiceImpl;
 import com.example.autoservicetrackerapi.services.InvoiceServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,15 +36,15 @@ public class InvoiceController {
     private FileStorageServiceImpl fileStorageService;
 
     @GetMapping("invoices")
-    public List<InvoiceDetailsResponse> getInvoices () {
+    public List<InvoiceResponse> getInvoices () {
 
         List<InvoiceDto> invoices = invoiceService.getInvoices();
-        List<InvoiceDetailsResponse> returnValue = new ArrayList<>();
+        List<InvoiceResponse> returnValue = new ArrayList<>();
 
         for (InvoiceDto invoiceDto : invoices) {
-            InvoiceDetailsResponse invoiceDetailsResponse = new InvoiceDetailsResponse();
-            BeanUtils.copyProperties(invoiceDto, invoiceDetailsResponse);
-            returnValue.add(invoiceDetailsResponse);
+            InvoiceResponse invoiceResponse = new InvoiceResponse();
+            BeanUtils.copyProperties(invoiceDto, invoiceResponse);
+            returnValue.add(invoiceResponse);
         }
         return returnValue;
     }
@@ -59,7 +59,7 @@ public class InvoiceController {
     }
 
     @PostMapping("invoices")
-    public InvoiceDetailsResponse createInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
+    public InvoiceResponse createInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
 
         InvoiceRequest invoiceRequest = new ObjectMapper().readValue(invoice, InvoiceRequest.class);
         invoiceRequest.setFile(file);
@@ -68,7 +68,7 @@ public class InvoiceController {
         BeanUtils.copyProperties(invoiceRequest, invoiceDto);
         InvoiceDto createdInvoice = invoiceService.createInvoice(invoiceDto);
 
-        InvoiceDetailsResponse returnValue = new InvoiceDetailsResponse();
+        InvoiceResponse returnValue = new InvoiceResponse();
         BeanUtils.copyProperties(createdInvoice, returnValue);
 
         return returnValue;
