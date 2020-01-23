@@ -1,7 +1,7 @@
 package com.example.autoservicetrackerapi.controllers;
 
 import com.example.autoservicetrackerapi.models.*;
-import com.example.autoservicetrackerapi.models.ui.InvoiceDetailsRequest;
+import com.example.autoservicetrackerapi.models.ui.InvoiceRequest;
 import com.example.autoservicetrackerapi.models.ui.InvoiceDetailsResponse;
 import com.example.autoservicetrackerapi.services.FileStorageServiceImpl;
 import com.example.autoservicetrackerapi.services.InvoiceServiceImpl;
@@ -61,11 +61,11 @@ public class InvoiceController {
     @PostMapping("invoices")
     public InvoiceDetailsResponse createInvoice(@RequestParam String invoice, @RequestParam MultipartFile file) throws IOException {
 
-        InvoiceDetailsRequest invoiceDetailsRequest = new ObjectMapper().readValue(invoice, InvoiceDetailsRequest.class);
-        invoiceDetailsRequest.setFile(file);
+        InvoiceRequest invoiceRequest = new ObjectMapper().readValue(invoice, InvoiceRequest.class);
+        invoiceRequest.setFile(file);
 
         InvoiceDto invoiceDto = new InvoiceDto();
-        BeanUtils.copyProperties(invoiceDetailsRequest, invoiceDto);
+        BeanUtils.copyProperties(invoiceRequest, invoiceDto);
         InvoiceDto createdInvoice = invoiceService.createInvoice(invoiceDto);
 
         InvoiceDetailsResponse returnValue = new InvoiceDetailsResponse();
