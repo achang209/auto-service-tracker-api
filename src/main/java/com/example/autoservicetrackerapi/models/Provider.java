@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class ServiceProvider {
+public class Provider {
 
     @Id @GeneratedValue
     private int id;

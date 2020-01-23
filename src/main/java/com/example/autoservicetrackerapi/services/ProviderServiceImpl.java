@@ -1,6 +1,6 @@
 package com.example.autoservicetrackerapi.services;
 
-import com.example.autoservicetrackerapi.models.ServiceProvider;
+import com.example.autoservicetrackerapi.models.Provider;
 import com.example.autoservicetrackerapi.models.ServiceProviderDao;
 import com.example.autoservicetrackerapi.models.ServiceProviderDto;
 import org.springframework.beans.BeanUtils;
@@ -18,12 +18,12 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public List<ServiceProviderDto> getServiceProviders() {
-        List<ServiceProvider> retrievedServiceProviders = serviceProviderDao.findAll();
+        List<Provider> retrievedProviders = serviceProviderDao.findAll();
         List<ServiceProviderDto> returnValue = new ArrayList<>();
 
-        for (ServiceProvider serviceProvider : retrievedServiceProviders) {
+        for (Provider provider : retrievedProviders) {
             ServiceProviderDto serviceProviderDto = new ServiceProviderDto();
-            BeanUtils.copyProperties(serviceProvider, serviceProviderDto);
+            BeanUtils.copyProperties(provider, serviceProviderDto);
             returnValue.add(serviceProviderDto);
         }
 

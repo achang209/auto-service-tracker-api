@@ -16,7 +16,7 @@ public class Invoice implements Serializable {
     private String date;
     private int mileage;
     @ManyToOne
-    private ServiceProvider serviceProvider;
+    private Provider provider;
     @ManyToOne
     private Repair repair;
     private String filePath;
@@ -45,12 +45,12 @@ public class Invoice implements Serializable {
         this.mileage = mileage;
     }
 
-    public ServiceProvider getServiceProvider() {
-        return serviceProvider;
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setServiceProvider(ServiceProvider serviceProvider) {
-        this.serviceProvider = serviceProvider;
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
     public Repair getRepair() {

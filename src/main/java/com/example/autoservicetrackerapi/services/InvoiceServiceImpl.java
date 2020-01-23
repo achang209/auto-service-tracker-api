@@ -3,7 +3,6 @@ package com.example.autoservicetrackerapi.services;
 import com.example.autoservicetrackerapi.models.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,8 +26,8 @@ public class InvoiceServiceImpl implements InvoiceService {
         String fileDownloadUri = fileStorageService.convertToFileDownloadUri(invoiceDto.getFile());
         invoiceDto.setFilePath(fileDownloadUri);
 
-        ServiceProvider serviceProvider = serviceProviderDao.findById(invoiceDto.getServiceProviderId()).get();
-        invoiceDto.setServiceProvider(serviceProvider);
+        Provider provider = serviceProviderDao.findById(invoiceDto.getServiceProviderId()).get();
+        invoiceDto.setProvider(provider);
 
         Invoice invoice = new Invoice();
         BeanUtils.copyProperties(invoiceDto, invoice);

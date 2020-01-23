@@ -1,6 +1,5 @@
 package com.example.autoservicetrackerapi.models.ui;
 
-import com.example.autoservicetrackerapi.models.ServiceProvider;
 import org.springframework.web.multipart.MultipartFile;
 
 public class InvoiceDetailsRequest {
