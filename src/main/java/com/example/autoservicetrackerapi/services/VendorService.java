@@ -4,6 +4,6 @@ import com.example.autoservicetrackerapi.models.VendorDto;
 
 import java.util.List;
 
-public interface ProviderService {
+public interface VendorService {
     List<VendorDto> getServiceProviders();
 }

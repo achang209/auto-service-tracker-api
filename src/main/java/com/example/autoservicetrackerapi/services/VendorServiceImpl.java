@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProviderServiceImpl implements ProviderService {
+public class VendorServiceImpl implements VendorService {
 
     @Autowired
     private VendorDao vendorDao;

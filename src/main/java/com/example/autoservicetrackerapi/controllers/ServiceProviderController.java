@@ -2,7 +2,7 @@ package com.example.autoservicetrackerapi.controllers;
 
 import com.example.autoservicetrackerapi.models.VendorDto;
 import com.example.autoservicetrackerapi.models.ui.VendorDetailsResponse;
-import com.example.autoservicetrackerapi.services.ProviderServiceImpl;
+import com.example.autoservicetrackerapi.services.VendorServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,7 @@ import java.util.List;
 public class ServiceProviderController {
 
     @Autowired
-    private ProviderServiceImpl providerService;
+    private VendorServiceImpl providerService;
 
     @GetMapping("service_provider")
     public List<VendorDetailsResponse> getServiceProviders () {
