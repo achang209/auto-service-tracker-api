@@ -53,7 +53,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public List<InvoiceDto> searchInvoicesByProvider(String name) {
-        List<Invoice> retrievedInvoices = invoiceDao.findByServiceProviderNameIgnoreCase(name);
+        List<Invoice> retrievedInvoices = invoiceDao.findByVendorNameIgnoreCase(name);
         List<InvoiceDto> returnValue = new ArrayList<>();
 
         for(Invoice invoice : retrievedInvoices) {
@@ -66,7 +66,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public List<InvoiceDto> searchInvoicesByService(String name) {
-        List<Invoice> retrievedInvoices = invoiceDao.findByServicePerformedNameIgnoreCase(name);
+        List<Invoice> retrievedInvoices = invoiceDao.findByRepairNameIgnoreCase(name);
         List<InvoiceDto> returnValue = new ArrayList<>();
 
         for(Invoice invoice : retrievedInvoices) {
