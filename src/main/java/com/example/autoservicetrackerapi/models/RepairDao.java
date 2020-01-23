@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ServicePerformedDao extends CrudRepository<ServicePerformed, Integer> {
-    List<ServicePerformed> findAll();
+public interface RepairDao extends CrudRepository<Repair, Integer> {
+    List<Repair> findAll();
 }

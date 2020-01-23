@@ -1,8 +1,8 @@
 package com.example.autoservicetrackerapi.services;
 
-import com.example.autoservicetrackerapi.models.ServicePerformed;
-import com.example.autoservicetrackerapi.models.ServicePerformedDao;
-import com.example.autoservicetrackerapi.models.ServicePerformedDto;
+import com.example.autoservicetrackerapi.models.Repair;
+import com.example.autoservicetrackerapi.models.RepairDao;
+import com.example.autoservicetrackerapi.models.RepairDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,17 @@ import java.util.List;
 public class ServicePerformedServiceImpl implements ServicePerformedService {
 
     @Autowired
-    private ServicePerformedDao servicePerformedDao;
+    private RepairDao repairDao;
 
     @Override
-    public List<ServicePerformedDto> getServices() {
-        List<ServicePerformed> retrievedServices = servicePerformedDao.findAll();
-        List<ServicePerformedDto> returnValue = new ArrayList<>();
+    public List<RepairDto> getServices() {
+        List<Repair> retrievedServices = repairDao.findAll();
+        List<RepairDto> returnValue = new ArrayList<>();
 
-        for (ServicePerformed service : retrievedServices) {
-            ServicePerformedDto servicePerformedDto = new ServicePerformedDto();
-            BeanUtils.copyProperties(service, servicePerformedDto);
-            returnValue.add(servicePerformedDto);
+        for (Repair service : retrievedServices) {
+            RepairDto repairDto = new RepairDto();
+            BeanUtils.copyProperties(service, repairDto);
+            returnValue.add(repairDto);
         }
         return returnValue;
     }

@@ -18,7 +18,7 @@ public class Invoice implements Serializable {
     @ManyToOne
     private ServiceProvider serviceProvider;
     @ManyToOne
-    private ServicePerformed servicePerformed;
+    private Repair repair;
     private String filePath;
 
     public int getId() {
@@ -53,12 +53,12 @@ public class Invoice implements Serializable {
         this.serviceProvider = serviceProvider;
     }
 
-    public ServicePerformed getServicePerformed() {
-        return servicePerformed;
+    public Repair getRepair() {
+        return repair;
     }
 
-    public void setServicePerformed(ServicePerformed servicePerformed) {
-        this.servicePerformed = servicePerformed;
+    public void setRepair(Repair repair) {
+        this.repair = repair;
     }
 
     public String getFilePath() {

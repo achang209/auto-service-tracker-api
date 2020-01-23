@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class ServicePerformed {
+public class Repair {
     @Id
     @GeneratedValue
     private int id;
@@ -15,7 +15,7 @@ public class ServicePerformed {
     @OneToMany @JoinColumn(name = "service_performed_id") @JsonIgnore
     private List<Invoice> invoices = new ArrayList<>();
 
-    public ServicePerformed() {
+    public Repair() {
     }
 
     public int getId() {

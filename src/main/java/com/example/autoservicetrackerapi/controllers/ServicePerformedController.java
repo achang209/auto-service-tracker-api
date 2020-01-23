@@ -1,9 +1,7 @@
 package com.example.autoservicetrackerapi.controllers;
 
-import com.example.autoservicetrackerapi.models.ServicePerformedDto;
+import com.example.autoservicetrackerapi.models.RepairDto;
 import com.example.autoservicetrackerapi.models.ui.ServicePerformedResponse;
-import com.example.autoservicetrackerapi.models.ui.ServiceProviderResponse;
-import com.example.autoservicetrackerapi.services.ServicePerformedService;
 import com.example.autoservicetrackerapi.services.ServicePerformedServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +21,12 @@ public class ServicePerformedController {
 
     @GetMapping("service_performed")
     public List<ServicePerformedResponse> getServices() {
-        List<ServicePerformedDto> retrievedServices = servicePerformedService.getServices();
+        List<RepairDto> retrievedServices = servicePerformedService.getServices();
         List<ServicePerformedResponse> returnValue = new ArrayList<>();
 
-        for (ServicePerformedDto servicePerformedDto : retrievedServices) {
+        for (RepairDto repairDto : retrievedServices) {
             ServicePerformedResponse servicePerformedResponse = new ServicePerformedResponse();
-            BeanUtils.copyProperties(servicePerformedDto, servicePerformedResponse);
+            BeanUtils.copyProperties(repairDto, servicePerformedResponse);
             returnValue.add(servicePerformedResponse);
         }
         return returnValue;
