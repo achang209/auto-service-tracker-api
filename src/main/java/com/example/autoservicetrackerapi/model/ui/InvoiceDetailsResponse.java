@@ -1,5 +1,6 @@
 package com.example.autoservicetrackerapi.model.ui;
 
+import com.example.autoservicetrackerapi.model.Repair;
 import com.example.autoservicetrackerapi.model.Vendor;
 
 public class InvoiceDetailsResponse {
@@ -7,7 +8,7 @@ public class InvoiceDetailsResponse {
     private String date;
     private int mileage;
     private Vendor vendor;
-    private String servicePerformed;
+    private Repair repair;
     private String filePath;
 
     public int getId() {
@@ -42,12 +43,12 @@ public class InvoiceDetailsResponse {
         this.vendor = vendor;
     }
 
-    public String getServicePerformed() {
-        return servicePerformed;
+    public Repair getRepair() {
+        return repair;
     }
 
-    public void setServicePerformed(String servicePerformed) {
-        this.servicePerformed = servicePerformed;
+    public void setRepair(Repair repair) {
+        this.repair = repair;
     }
 
     public String getFilePath() {
