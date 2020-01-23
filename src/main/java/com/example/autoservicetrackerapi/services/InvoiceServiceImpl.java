@@ -26,8 +26,8 @@ public class InvoiceServiceImpl implements InvoiceService {
         String fileDownloadUri = fileStorageService.convertToFileDownloadUri(invoiceDto.getFile());
         invoiceDto.setFilePath(fileDownloadUri);
 
-        Provider provider = providerDao.findById(invoiceDto.getServiceProviderId()).get();
-        invoiceDto.setProvider(provider);
+        Vendor vendor = providerDao.findById(invoiceDto.getServiceProviderId()).get();
+        invoiceDto.setVendor(vendor);
 
         Invoice invoice = new Invoice();
         BeanUtils.copyProperties(invoiceDto, invoice);

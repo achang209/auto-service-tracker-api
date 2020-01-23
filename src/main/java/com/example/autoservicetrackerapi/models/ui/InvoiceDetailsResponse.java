@@ -1,12 +1,12 @@
 package com.example.autoservicetrackerapi.models.ui;
 
-import com.example.autoservicetrackerapi.models.Provider;
+import com.example.autoservicetrackerapi.models.Vendor;
 
 public class InvoiceDetailsResponse {
     private int Id;
     private String date;
     private int mileage;
-    private Provider provider;
+    private Vendor vendor;
     private String servicePerformed;
     private String filePath;
 
@@ -34,12 +34,12 @@ public class InvoiceDetailsResponse {
         this.mileage = mileage;
     }
 
-    public Provider getProvider() {
-        return provider;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 
     public String getServicePerformed() {

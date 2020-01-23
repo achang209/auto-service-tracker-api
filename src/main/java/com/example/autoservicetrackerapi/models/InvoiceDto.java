@@ -11,7 +11,7 @@ public class InvoiceDto implements Serializable {
     private String date;
     private int mileage;
     private int serviceProviderId;
-    private Provider provider;
+    private Vendor vendor;
     private String servicePerformed;
     private MultipartFile file;
     private String filePath;
@@ -48,12 +48,12 @@ public class InvoiceDto implements Serializable {
         this.serviceProviderId = serviceProviderId;
     }
 
-    public Provider getProvider() {
-        return provider;
+    public Vendor getVendor() {
+        return vendor;
     }
 
-    public void setProvider(Provider provider) {
-        this.provider = provider;
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 
     public String getServicePerformed() {
