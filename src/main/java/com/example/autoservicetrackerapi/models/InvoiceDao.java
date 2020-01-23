@@ -9,10 +9,8 @@ import java.util.List;
 public interface InvoiceDao extends CrudRepository<Invoice, Integer> {
     List<Invoice> findAll();
 
-    /*
-    List<Invoice> findByServiceProviderIgnoreCase(ServiceProvider serviceProvider);
+    List<Invoice> findByServiceProviderNameIgnoreCase(String name);
 
-     */
 
-    List<Invoice> findByServicePerformedIgnoreCase(String servicePerformed);
+    List<Invoice> findByServicePerformedNameIgnoreCase(String name);
 }
