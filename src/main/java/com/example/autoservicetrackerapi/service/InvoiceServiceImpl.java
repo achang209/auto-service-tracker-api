@@ -18,6 +18,9 @@ public class InvoiceServiceImpl implements InvoiceService {
     private VendorDao vendorDao;
 
     @Autowired
+    private RepairDao repairDao;
+
+    @Autowired
     private FileStorageServiceImpl fileStorageService;
 
     @Override
@@ -26,8 +29,10 @@ public class InvoiceServiceImpl implements InvoiceService {
         String fileDownloadUri = fileStorageService.convertToFileDownloadUri(invoiceDto.getFile());
         invoiceDto.setFilePath(fileDownloadUri);
 
-        Vendor vendor = vendorDao.findById(invoiceDto.getServiceProviderId()).get();
+        Vendor vendor = vendorDao.findById(invoiceDto.getVendorId()).get();
         invoiceDto.setVendor(vendor);
+        Repair repair = repairDao.findById(invoiceDto.getRepairId()).get();
+        invoiceDto.setRepair(repair);
 
         Invoice invoice = new Invoice();
         BeanUtils.copyProperties(invoiceDto, invoice);
