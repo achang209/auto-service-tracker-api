@@ -3,7 +3,7 @@ package com.example.autoservicetrackerapi.services;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "file")
-public class StorageProperties {
+public class FileStorageProperties {
 
     private String uploadDir;
 

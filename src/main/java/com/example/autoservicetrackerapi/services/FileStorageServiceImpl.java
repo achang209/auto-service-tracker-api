@@ -24,7 +24,7 @@ public class FileStorageServiceImpl implements FileStorageService {
     private final Path rootLocation;
 
     @Autowired
-    public FileStorageServiceImpl(StorageProperties properties) {
+    public FileStorageServiceImpl(FileStorageProperties properties) {
         this.rootLocation = Paths.get(properties.getUploadDir());
         try {
             Files.createDirectories(rootLocation);
