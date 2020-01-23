@@ -1,6 +1,6 @@
 package com.example.autoservicetrackerapi.models.ui;
 
-public class RepairResponse {
+public class RepairDetailsRequest {
     private int id;
     private String name;
 
