@@ -5,8 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class InvoiceDetailsRequest {
     private String date;
     private int mileage;
-    private int serviceProviderId;
-    private String servicePerformed;
+    private int vendorId;
+    private int repairId;
     private MultipartFile file;
 
     public String getDate() {
@@ -25,20 +25,20 @@ public class InvoiceDetailsRequest {
         this.mileage = mileage;
     }
 
-    public int getServiceProviderId() {
-        return serviceProviderId;
+    public int getVendorId() {
+        return vendorId;
     }
 
-    public void setServiceProviderId(int serviceProviderId) {
-        this.serviceProviderId = serviceProviderId;
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
     }
 
-    public String getServicePerformed() {
-        return servicePerformed;
+    public int getRepairId() {
+        return repairId;
     }
 
-    public void setServicePerformed(String servicePerformed) {
-        this.servicePerformed = servicePerformed;
+    public void setRepairId(int repairId) {
+        this.repairId = repairId;
     }
 
     public MultipartFile getFile() {
