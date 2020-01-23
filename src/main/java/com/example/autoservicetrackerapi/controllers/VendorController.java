@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ServiceProviderController {
+public class VendorController {
 
     @Autowired
     private VendorServiceImpl providerService;

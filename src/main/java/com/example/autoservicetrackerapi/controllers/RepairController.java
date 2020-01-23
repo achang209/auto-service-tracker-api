@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class ServicePerformedController {
+public class RepairController {
 
     @Autowired
     private ServicePerformedServiceImpl servicePerformedService;
