@@ -1,6 +1,6 @@
 package com.example.autoservicetrackerapi.models;
 
-public class ServiceProviderDto {
+public class ProviderDto {
     private int id;
     private String name;
 
