@@ -12,7 +12,7 @@ public class Repair {
     @GeneratedValue
     private int id;
     private String name;
-    @OneToMany @JoinColumn(name = "service_performed_id") @JsonIgnore
+    @OneToMany @JoinColumn(name = "repair_id") @JsonIgnore
     private List<Invoice> invoices = new ArrayList<>();
 
     public Repair() {

@@ -12,7 +12,7 @@ public class Vendor {
     @Id @GeneratedValue
     private int id;
     private String name;
-    @OneToMany @JoinColumn(name = "service_provider_id") @JsonIgnore
+    @OneToMany @JoinColumn(name = "vendor_id") @JsonIgnore
     private List<Invoice> invoices = new ArrayList<>();
 
     public int getId() {
