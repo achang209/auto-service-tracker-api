@@ -57,7 +57,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public List<InvoiceDto> searchInvoicesByProvider(String name) {
+    public List<InvoiceDto> searchInvoicesByVendor(String name) {
         List<Invoice> retrievedInvoices = invoiceDao.findByVendorNameIgnoreCase(name);
         List<InvoiceDto> returnValue = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     }
 
     @Override
-    public List<InvoiceDto> searchInvoicesByService(String name) {
+    public List<InvoiceDto> searchInvoicesByRepair(String name) {
         List<Invoice> retrievedInvoices = invoiceDao.findByRepairNameIgnoreCase(name);
         List<InvoiceDto> returnValue = new ArrayList<>();
 

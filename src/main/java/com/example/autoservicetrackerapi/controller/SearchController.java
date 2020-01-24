@@ -19,9 +19,9 @@ public class SearchController {
     private InvoiceServiceImpl invoiceService;
 
 
-    @GetMapping("provider")
-    public List<InvoiceDetailsResponse> searchInvoicesByProvider(@RequestParam String name) {
-        List<InvoiceDto> retrievedInvoices = invoiceService.searchInvoicesByProvider(name);
+    @GetMapping("vendor")
+    public List<InvoiceDetailsResponse> searchInvoicesByVendor(@RequestParam String name) {
+        List<InvoiceDto> retrievedInvoices = invoiceService.searchInvoicesByVendor(name);
         List<InvoiceDetailsResponse> returnValue = new ArrayList<>();
 
         for (InvoiceDto invoiceDto : retrievedInvoices) {
@@ -32,9 +32,9 @@ public class SearchController {
         return returnValue;
     }
 
-    @GetMapping("service")
-    public List<InvoiceDetailsResponse> searchInvoicesByService(@RequestParam String name) {
-        List<InvoiceDto> retrievedInvoices = invoiceService.searchInvoicesByService(name);
+    @GetMapping("repair")
+    public List<InvoiceDetailsResponse> searchInvoicesByRepair(@RequestParam String name) {
+        List<InvoiceDto> retrievedInvoices = invoiceService.searchInvoicesByRepair(name);
         List<InvoiceDetailsResponse> returnValue = new ArrayList<>();
 
         for (InvoiceDto invoiceDto : retrievedInvoices) {

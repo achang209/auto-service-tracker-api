@@ -10,7 +10,7 @@ public interface InvoiceService {
 
     List<InvoiceDto> getInvoices();
 
-    List<InvoiceDto> searchInvoicesByProvider(String name);
+    List<InvoiceDto> searchInvoicesByVendor(String name);
 
-    List<InvoiceDto> searchInvoicesByService(String name);
+    List<InvoiceDto> searchInvoicesByRepair(String name);
 }
