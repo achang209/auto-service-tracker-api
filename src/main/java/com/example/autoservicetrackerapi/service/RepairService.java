@@ -4,6 +4,6 @@ import com.example.autoservicetrackerapi.model.RepairDto;
 
 import java.util.List;
 
-public interface ServicePerformedService {
+public interface RepairService {
     List<RepairDto> getServices();
 }

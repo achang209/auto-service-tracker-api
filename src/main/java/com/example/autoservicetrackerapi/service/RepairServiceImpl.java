@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ServicePerformedServiceImpl implements ServicePerformedService {
+public class RepairServiceImpl implements RepairService {
 
     @Autowired
     private RepairDao repairDao;
