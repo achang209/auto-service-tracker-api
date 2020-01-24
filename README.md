@@ -7,12 +7,8 @@ This application pairing allows users to keep track of their car's maintenance h
 visits to disparate car shops and not being able to recall when or who last serviced a particular part of my car.
 
 ## Current Features:
-Users can save and edit their invoice details, search their invoices by various properties (i.e. service provider or service performed),
+Users can save and edit their invoice details, search their invoices by various properties (i.e. vendor or repair),
 and upload/download a PDF of their original invoice.
 
 ## Next Steps:
-Currently my `Invoice` model object has a flat architecture structure where the value of each property is of type `int`
-or `String`. Moving forward, I would like to implement a nested object architecture to allow certain `Invoice` properties 
-(i.e. service provider and service performed) to be their own entity classes to illustrate relationships between the data types.
-Although I understand how to establish these relationships in my back end, I am struggling to deserialize the JSON object to Java objects
-when attempting to implement a nested entity architecture.
+I would like to implement some sort of authentication/authorization mechanism (probably Spring Security) to allow my application to be used by multiple users. Also, I would like to deploy my application.
