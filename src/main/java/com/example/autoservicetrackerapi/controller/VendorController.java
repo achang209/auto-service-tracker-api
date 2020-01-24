@@ -20,7 +20,7 @@ public class VendorController {
     private VendorServiceImpl vendorService;
 
     @GetMapping("vendor")
-    public List<VendorDetailsResponse> getServiceProviders () {
+    public List<VendorDetailsResponse> getVendors () {
         List<VendorDto> providers = vendorService.getVendors();
         List<VendorDetailsResponse> returnValue = new ArrayList<>();
 
