@@ -17,11 +17,11 @@ import java.util.List;
 public class RepairController {
 
     @Autowired
-    private RepairServiceImpl servicePerformedService;
+    private RepairServiceImpl repairService;
 
-    @GetMapping("service_performed")
+    @GetMapping("repair")
     public List<RepairDetailsResponse> getServices() {
-        List<RepairDto> retrievedServices = servicePerformedService.getServices();
+        List<RepairDto> retrievedServices = repairService.getServices();
         List<RepairDetailsResponse> returnValue = new ArrayList<>();
 
         for (RepairDto repairDto : retrievedServices) {
