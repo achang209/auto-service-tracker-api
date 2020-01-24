@@ -7,7 +7,7 @@ This application pairing allows users to keep track of their car's maintenance h
 visits to disparate car shops and not being able to recall when or who last serviced a particular part of my car.
 
 ## Current Features:
-Users can save and edit their invoice details, search their invoices by various properties (i.e. vendor or repair),
+Users can save and edit their `Invoice` details, search their invoices by various properties (i.e. `Vendor` or `Repair`),
 and upload/download a PDF of their original invoice.
 
 ## Next Steps:
