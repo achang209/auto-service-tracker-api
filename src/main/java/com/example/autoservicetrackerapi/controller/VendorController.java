@@ -17,11 +17,11 @@ import java.util.List;
 public class VendorController {
 
     @Autowired
-    private VendorServiceImpl providerService;
+    private VendorServiceImpl vendorService;
 
-    @GetMapping("service_provider")
+    @GetMapping("vendor")
     public List<VendorDetailsResponse> getServiceProviders () {
-        List<VendorDto> providers = providerService.getServiceProviders();
+        List<VendorDto> providers = vendorService.getVendors();
         List<VendorDetailsResponse> returnValue = new ArrayList<>();
 
         for (VendorDto vendorDto : providers) {

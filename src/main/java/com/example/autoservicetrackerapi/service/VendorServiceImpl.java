@@ -17,7 +17,7 @@ public class VendorServiceImpl implements VendorService {
     private VendorDao vendorDao;
 
     @Override
-    public List<VendorDto> getServiceProviders() {
+    public List<VendorDto> getVendors() {
         List<Vendor> retrievedVendors = vendorDao.findAll();
         List<VendorDto> returnValue = new ArrayList<>();
 
