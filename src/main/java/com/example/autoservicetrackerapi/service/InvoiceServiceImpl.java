@@ -4,11 +4,14 @@ import com.example.autoservicetrackerapi.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Validated
 public class InvoiceServiceImpl implements InvoiceService {
 
     @Autowired
@@ -24,7 +27,8 @@ public class InvoiceServiceImpl implements InvoiceService {
     private FileStorageServiceImpl fileStorageService;
 
     @Override
-    public InvoiceDto createInvoice(InvoiceDto invoiceDto) {
+    public InvoiceDto createInvoice(@Valid InvoiceDto invoiceDto) {
+
         fileStorageService.store(invoiceDto.getFile());
         String fileDownloadUri = fileStorageService.convertToFileDownloadUri(invoiceDto.getFile());
         invoiceDto.setFilePath(fileDownloadUri);
