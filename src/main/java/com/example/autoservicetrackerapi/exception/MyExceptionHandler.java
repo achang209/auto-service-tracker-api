@@ -1,4 +1,4 @@
-package com.example.autoservicetrackerapi.controller;
+package com.example.autoservicetrackerapi.exception;
 
 
 import com.example.autoservicetrackerapi.model.ui.ErrorMessage;
@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
