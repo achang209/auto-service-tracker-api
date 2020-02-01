@@ -1,13 +1,12 @@
 package com.example.autoservicetrackerapi.controller;
 
 import com.example.autoservicetrackerapi.model.VendorDto;
+import com.example.autoservicetrackerapi.model.ui.VendorDetailsRequest;
 import com.example.autoservicetrackerapi.model.ui.VendorDetailsResponse;
 import com.example.autoservicetrackerapi.service.VendorServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +28,18 @@ public class VendorController {
             BeanUtils.copyProperties(vendorDto, serviceVendorDetailsResponse);
             returnValue.add(serviceVendorDetailsResponse);
         }
+        return returnValue;
+    }
+
+    @PostMapping("vendor")
+    public VendorDetailsResponse addVendor(@RequestBody VendorDetailsRequest vendorDetailsRequest) {
+        VendorDto vendorDto = new VendorDto();
+        BeanUtils.copyProperties(vendorDetailsRequest, vendorDto);
+        VendorDto createdVendor = vendorService.addVendor(vendorDto);
+
+        VendorDetailsResponse returnValue = new VendorDetailsResponse();
+        BeanUtils.copyProperties(createdVendor, returnValue);
+
         return returnValue;
     }
 }
