@@ -11,4 +11,4 @@ Users can save and edit their `Invoice` details, search their invoices by variou
 and upload/download a PDF of their original invoice.
 
 ## Next Steps:
-I would like to implement some sort of authentication/authorization mechanism (probably Spring Security) to allow my application to be used by multiple users. Also, I would like to deploy my application.
+I would like to add custom exception handling so the error messaging is consumer friendly and implement some sort of authentication/authorization mechanism (probably Spring Security) to allow my application to be used by multiple users. After that, I think it would be nice to containerize my project and all of it's dependencies to allow for easy portability across different machines. 
