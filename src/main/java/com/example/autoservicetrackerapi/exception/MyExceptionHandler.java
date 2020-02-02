@@ -18,6 +18,7 @@ import java.util.List;
 
 @ControllerAdvice
 public class MyExceptionHandler extends ResponseEntityExceptionHandler {
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex, WebRequest request) {
 
@@ -27,6 +28,16 @@ public class MyExceptionHandler extends ResponseEntityExceptionHandler {
         }
 
         ErrorMessage errorMessage = new ErrorMessage(new Date(), HttpStatus.BAD_REQUEST, errors);
+
+        return new ResponseEntity<Object>(errorMessage, new HttpHeaders(), errorMessage.getStatus());
+    }
+
+    @ExceptionHandler(VendorServiceException.class)
+    public ResponseEntity<Object> handleVendorServiceException(VendorServiceException ex, WebRequest request) {
+
+        String error = ex.getMessage();
+
+        ErrorMessage errorMessage = new ErrorMessage(new Date(), HttpStatus.INTERNAL_SERVER_ERROR, error);
 
         return new ResponseEntity<Object>(errorMessage, new HttpHeaders(), errorMessage.getStatus());
     }
