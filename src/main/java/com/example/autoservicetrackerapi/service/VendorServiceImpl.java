@@ -1,5 +1,6 @@
 package com.example.autoservicetrackerapi.service;
 
+import com.example.autoservicetrackerapi.exception.VendorServiceException;
 import com.example.autoservicetrackerapi.model.Vendor;
 import com.example.autoservicetrackerapi.model.VendorDao;
 import com.example.autoservicetrackerapi.model.VendorDto;
@@ -40,6 +41,15 @@ public class VendorServiceImpl implements VendorService {
         BeanUtils.copyProperties(storedVendorDetails, returnValue);
 
         return returnValue;
+    }
+
+    @Override
+    public void deleteVendor(int vendorId) {
+
+        if (!vendorDao.existsById(vendorId)) {
+            throw new VendorServiceException("Vendor with id " + vendorId + " does not exist" );
+        }
+        vendorDao.deleteById(vendorId);
     }
 
 
