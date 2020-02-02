@@ -42,4 +42,9 @@ public class VendorController {
 
         return returnValue;
     }
+
+    @DeleteMapping("vendor/{id}")
+    public void deleteVendor(@PathVariable int id) {
+        vendorService.deleteVendor(id);
+    }
 }
