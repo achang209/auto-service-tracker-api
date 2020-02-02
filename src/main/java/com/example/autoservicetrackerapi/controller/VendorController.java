@@ -1,6 +1,7 @@
 package com.example.autoservicetrackerapi.controller;
 
 import com.example.autoservicetrackerapi.model.VendorDto;
+import com.example.autoservicetrackerapi.model.ui.OperationStatus;
 import com.example.autoservicetrackerapi.model.ui.VendorDetailsRequest;
 import com.example.autoservicetrackerapi.model.ui.VendorDetailsResponse;
 import com.example.autoservicetrackerapi.service.VendorServiceImpl;
@@ -44,7 +45,12 @@ public class VendorController {
     }
 
     @DeleteMapping("vendor/{id}")
-    public void deleteVendor(@PathVariable int id) {
+    public OperationStatus deleteVendor(@PathVariable int id) {
         vendorService.deleteVendor(id);
+        OperationStatus operationStatus = new OperationStatus();
+        operationStatus.setOperationName("Delete");
+        operationStatus.setOperationResult("Success");
+
+        return operationStatus;
     }
 }
