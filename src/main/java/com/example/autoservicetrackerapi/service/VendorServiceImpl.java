@@ -29,4 +29,18 @@ public class VendorServiceImpl implements VendorService {
 
         return returnValue;
     }
+
+    @Override
+    public VendorDto addVendor(VendorDto vendorDto) {
+        Vendor vendor = new Vendor();
+        BeanUtils.copyProperties(vendorDto, vendor);
+        Vendor storedVendorDetails = vendorDao.save(vendor);
+
+        VendorDto returnValue = new VendorDto();
+        BeanUtils.copyProperties(storedVendorDetails, returnValue);
+
+        return returnValue;
+    }
+
+
 }
